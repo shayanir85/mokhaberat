@@ -129,7 +129,7 @@ input:checked + .slider:before {
                 h = rndm(min,max);
                 //checks if curse words are not same than shows it. 
                 if(words[i] != words2[j] && words[i] != words3[h] && words2[j]!=words3[h]) {
-                    $('#add').text(words[i]+' '+words2[j]+' '+ words3[h]);
+                    $('#add').text(words[i].toUpperCase()+' '+words2[j].toUpperCase()+' '+ words3[h].toUpperCase());
                 }
             }); 
             $('.slider').on('click', function() {
