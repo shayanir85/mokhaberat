@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- styles -->
+    <style>
+        .word{
+            text-align: center;
+        }
+        .tci{
+            display: inline-flex;
+        }
+    </style>
+</head>
+<body>
+    <!-- html -->
+    <div class="word">
+        <h1 id="add" class="tci"> </h1>
+        <h1 class="tci">MOKHABERAT = مخابرات</h1>
+        <br>
+        <button class="btn">CURSE WORD!!</button>
+    </div>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="java.js"></script>
+    <script>
+            let i = 0;
+            let j = 0;
+            //min length of words and words2
+            const min = 0;
+            // max length of words and words2
+            const max = words.length - 1;
+            //this function generates random numbers
+            function rndm(min,max){
+                return Math.floor(Math.random()*(max - min + 1)) + min;
+            }
+            $('.btn').on('click',function(){
+                i = rndm(min,max);
+                j = rndm(min,max);
+                //checks if curse words are not same than shows it. 
+                if(words[i] != words2[j]){
+                    $('#add').text(words[i]+' '+words2[j]);
+                }
+            });               
+    </script>
+</body>
+</html>
