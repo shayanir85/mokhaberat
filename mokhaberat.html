@@ -12,9 +12,95 @@
         .tci{
             display: inline-flex;
         }
+        .light{
+            background-color: rgb(255, 255, 255);
+            color: black;
+        }
+        .dark{
+            background-color: black;
+            color: rgb(255, 255, 255);
+        }
+        .btn{
+            border-radius: 20px;
+            border: none;
+            padding: 10px;
+        }
+        .btn:hover{
+            color: rgb(255, 0, 0);
+            cursor: pointer;
+            border: 2px solid black;
+            transform: scale(1.1);
+            transition: 0.5s cubic-bezier(1, 0, 0, 1);
+        }
+        .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
     </style>
 </head>
-<body>
+<body class="dark">
+    <!-- dark mode btn -->
+    <form>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+    </form>
     <!-- html -->
     <div class="word">
         <h1 id="add" class="tci"> </h1>
@@ -28,6 +114,7 @@
     <script>
             let i = 0;
             let j = 0;
+            let h = 0; 
             //min length of words and words2
             const min = 0;
             // max length of words and words2
@@ -39,11 +126,19 @@
             $('.btn').on('click',function(){
                 i = rndm(min,max);
                 j = rndm(min,max);
+                h = rndm(min,max);
                 //checks if curse words are not same than shows it. 
-                if(words[i] != words2[j]){
-                    $('#add').text(words[i]+' '+words2[j]);
+                if(words[i] != words2[j] && words[i] != words3[h] && words2[j]!=words3[h]) {
+                    $('#add').text(words[i]+' '+words2[j]+' '+ words3[h]);
                 }
-            });               
+            }); 
+            $('.slider').on('click', function() {
+                if ($('body').hasClass('dark')) {
+                    $('body').removeClass('dark');
+                    $('body').addClass('light');
+                } else {
+                    $('body').addClass('dark');
+                }});
     </script>
 </body>
 </html>
